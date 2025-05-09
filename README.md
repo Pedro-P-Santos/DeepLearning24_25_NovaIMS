@@ -5,21 +5,23 @@ This project tackles the challenge of classifying rare biological species at the
 
 **Keywords:** Convolutional Neural Networks, Image Classification, Transfer Learning, Deep Learning, Data Augmentation, Keras, Regularization
 
-## 🚀 Key Findings
-Best Model: The ConvNeXtFull architecture achieved the highest performance with a macro F1 score of 82% on a 90/10 train-validation split.
 
-Transfer Learning Wins: Pre-trained models (ConvNeXtBase, InceptionResNetV2, DenseNet121) significantly outperformed custom CNNs, saving training time and improving accuracy.
 
-Data Imbalance: Class imbalance severely impacted model performance on rare species, especially in underrepresented families.
+## ✅ Key Results
 
-Augmentation Insights:
+- **Best Model**: `ConvNeXtFull` variant  
+- **Macro F1 Score**: **82%** on a 90/10 train-validation split  
+- **Transfer learning** significantly outperformed custom CNNs  
+- Fine-tuning led to **overfitting**; frozen backbones performed better  
+- **Data volume** had the most positive impact on performance
 
-Beneficial for InceptionResNetV2 with moderate transformations.
+## 🧰 Tools & Techniques
 
-Detrimental for ConvNeXtBase, where raw image input yielded better results.
-
-Fine-Tuning Limitations: Attempts at fine-tuning often led to overfitting; frozen backbones provided more stable results.
-
-Hyperparameter Tuning: Manual tuning outperformed random search, which often caused overfitting despite some strong configurations.
-
-Data Volume Impact: Increasing training set size to 90% of data had the most substantial positive effect on generalization and validation performance.
+- **Frameworks**: TensorFlow, Keras, scikit-learn  
+- **Models**: ConvNeXtBase, DenseNet121, InceptionResNetV2  
+- **Strategies**:
+  - Architecture-specific `preprocess_input`
+  - Stratified train/val/test splits
+  - Regularization: dropout, early stopping
+  - Augmentation (selective use)
+  - Hyperparameter tuning via Keras Tuner (Random Search)
